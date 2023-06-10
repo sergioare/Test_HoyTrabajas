@@ -27,6 +27,7 @@ export const Navbar = () => {
 
     const goToSearchPage = ()=>{
         if(keyword){
+            defaultKeyword.current = keyword
             navigate(`/search?q=${keyword}`)
             setIsSearchFocus(false)
             searchRef.current?.blur()
@@ -60,13 +61,13 @@ export const Navbar = () => {
         }
     },[])
   return (
-    <div className="bg-header">
-        <Container className="flex items-center justify-between">
-            <div className="flex items-center gap-10">
+    <div className="bg-header sticky top-0 z-[99]">
+        <Container className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-6">
                 <h1 className="text-2xl font-semibold">
                     <Link to='/'>HoyMovieas</Link>
                 </h1>
-                <div className="flex pt-1.5 items-center gap-1.5">
+                <div className="flex pt-1.5 items-center gap-1.5 mobile:fixed mobile:bottom-0 mobile:left-0  mobile:right-0 mobile:justify-center mobile:py-3 mobile:bg-header mobile:gap-6">
                     <Link className={getMenuClass('/movies')} to={'/movies'}>Movies</Link>
                     <Link className={getMenuClass('/series')} to={'/series'}>Series</Link>
                 </div>
@@ -87,7 +88,7 @@ export const Navbar = () => {
                 />
                 <SearchIcon className='size-18'></SearchIcon>
                 {
-                    isSearchFocus 
+                    isSearchFocus && keyword
                     ? <SearchResults keyword={keyword} goToSearchPage={goToSearchPage}></SearchResults>
                     : ''
                 }   

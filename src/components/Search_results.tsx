@@ -10,7 +10,7 @@ interface Props{
 
 export const SearchResults = (props: Props) => {
     const [items, setItems] = useState<Film[]>([])
-
+    const [totalItem, setTotalItem] =useState(6)
     const fetch = ()=>{
         const arrs: Film[] = []
 
@@ -48,7 +48,7 @@ export const SearchResults = (props: Props) => {
             </div>
         ))}
 
-        {items.length>6
+        {totalItem>6
             ?<button 
                 className='px-3 py-1.5 bg-primary w-full hover:text-body'
                 onClick={()=>props.goToSearchPage()}                
