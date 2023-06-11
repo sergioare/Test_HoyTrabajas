@@ -88,7 +88,7 @@ export const Navbar = () => {
                 />
                 <SearchIcon className='size-18'></SearchIcon>
                 {
-                    isSearchFocus && keyword
+                    isSearchFocus 
                     ? <SearchResults keyword={keyword} goToSearchPage={goToSearchPage}></SearchResults>
                     : ''
                 }   

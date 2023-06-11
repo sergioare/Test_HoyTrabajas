@@ -1,14 +1,20 @@
 import { Images } from "."
-import { Film } from "../utils"
 
 interface Props{
-    film: Film
+    imgSrc: string
+    title: string
+    onClick?: Function
 }
 export const Card = (props:Props) => {
+
   return (
-    <div className="mx-3 my-1.5">
-        <Images src='' className="h-[200px]"></Images>
-        <p className="py-1.5 line-clamp-2">{props.film.title}</p>
+    <div 
+    // onClick={()=>navigate(`/${props.film.mediaType}/${props.film.id}`)}
+    onClick={()=>(props.onClick ? props.onClick: '')}
+    className="mx-3 my-1.5 cursor-pointer"
+    >
+        <Images src='' className="min-h-[200px] h-[200px]"></Images>
+        <p className="py-1.5 line-clamp-2">{props.title}</p>
         
     </div>
   )
