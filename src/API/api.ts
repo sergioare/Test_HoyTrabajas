@@ -1,5 +1,5 @@
 import axios, {AxiosResponse} from 'axios'
-import { Film, Genre, MediaType, formatResultRequest } from '../utils'
+import { Film, Genre, MediaType, Trailer, formatResultRequest } from '../utils'
 
 const axiosClient = axios.create({
     baseURL: import.meta.env.API_MOVIES_URL
