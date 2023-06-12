@@ -1,3 +1,4 @@
+export * from './404Error';
 export * from './Catalog';
 export * from './Films';
 export * from './Footer';

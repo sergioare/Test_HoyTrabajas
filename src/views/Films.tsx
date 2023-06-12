@@ -68,7 +68,7 @@ export const Films = (props: Props) => {
           <div className="flex items-center gap-3">
             {trailers.map((trailer, i) => (
               <div className="flex-shrink-0 w-[320px] my-3">
-                <Card title=""
+                <Card title={}
                   imgSrc=''
                   key={i}
                 ></Card>

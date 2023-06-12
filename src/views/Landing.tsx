@@ -39,7 +39,7 @@ useEffect(()=>{
 }, [])
   return (
     <div className="pb-[48px]">
-        <Section className="py-0">
+        <Section className="py-0" title="What´s popular">
           <Slider className="slick-hero" autoplay={true} slidesToShow={1} slidesToScroll={1}>
               {popular.map((film, i)=>(
                 <Populars 
