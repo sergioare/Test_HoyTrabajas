@@ -53,7 +53,7 @@ useEffect(()=>{
         <Section className="" title='Movies'>
           <Slider isMovieCard={true} autoplay={true} slidesToShow={5} slidesToScroll={5}>
               {movies.map((film, i)=>(
-                <Card 
+                <Card className=""
                   onClick={()=>goToDetailPage(film)}
                   title={film.title} 
                   imgSrc={imageAPI(film.posterPath)} 

@@ -46,12 +46,12 @@ export const Catalog = (props:Props) => {
         className="-mt-[85px] flex items-center relative z-10 ml-[20px]" 
         title={title}>
         </Section>
-        <Section>
+        <Section className="">
               <div className="grid lg:grid-cols-5 sm:grid-cols-4 mobile:grid-cols-3 relative z-[11]">
               {
                 films.map((film, i)=>(
                   <div>
-                    <Card imgSrc={imageAPI(film.coverPath) } title={film.title} key={i}></Card>
+                    <Card className="" imgSrc={imageAPI(film.coverPath) } title={film.title} key={i}></Card>
                   </div>
                 ))
               }

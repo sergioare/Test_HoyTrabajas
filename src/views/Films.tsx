@@ -43,7 +43,7 @@ export const Films = (props: Props) => {
     <>
       <div className="h-[300px] left-0 top-0 right-0 relative">
         <div className="overlay-film-cover"></div>
-          <Images src={imageAPI(film.coverPath)}></Images>
+          <Images src={imageAPI(film.coverPath)} className=""></Images>
       </div>
       <Section className="-mt-[150px] flex items-center relative z-10 mobile:block">
         <Images src={imageAPI(film.posterPath)} className="w-[200px] min-w-[200px] h-[350px] mobile:mx-auto"></Images>
@@ -78,6 +78,7 @@ export const Films = (props: Props) => {
                 // onClick={() => playTrailer(trailer.key)}
                 imgSrc={youtubeImg(trailer.key)}
                 className="flex-shrink-0"
+                title=""
                 key={i}
               ></Card>
             ))}
