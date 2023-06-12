@@ -101,3 +101,30 @@ export const getDetail = async (mediaType:MediaType, id: number): Promise<null |
     }
     return null
 }
+
+export const getTrailers = async (
+    mediaType: MediaType,
+    id: number
+  ): Promise<Trailer[]> => {
+    try {
+      const { data } = await axiosClient.get<
+        any,
+        AxiosResponse<{
+          results: any[]
+        }>
+      >(`/${mediaType}/${id}/videos`)
+  
+      return (
+        data.results
+          .filter((res) => res.site.toLowerCase() === 'youtube')
+          .map((res) => ({
+            id: res.id,
+            key: res.key,
+          })) ?? []
+      )
+    } catch (error) {
+      console.error(error)
+    }
+  
+    return []
+  }

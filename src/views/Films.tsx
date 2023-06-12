@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react"
 import { Card, Images, Section, useGlobalContext } from "../components"
-import { Film, MediaType, Trailer, imageAPI } from "../utils"
+import { Film, MediaType, Trailer, imageAPI, youtubeImg } from "../utils"
 import {useParams} from 'react-router-dom'
-import { getDetail } from "../API/api"
+import { getDetail, getTrailers } from "../API/api"
 
 interface Props{
     mediaType: MediaType
@@ -12,16 +12,23 @@ export const Films = (props: Props) => {
     const [film, setFilm]=useState<Film | null>()
 
     const [trailers, setTrailers]= useState<Trailer[]>([])
+
+    const [trailerSrc, setTrailerSrc] = useState('')
+
+    const playTrailer = async (key: string) => {
+      setTrailerSrc(`https://www.youtube.com/embed/${key}?autoplay=1`)
+    }
     const globalContext= useGlobalContext()
 
     const fetch = async ()=>{
-      setFilm(await getDetail(props.mediaType, parseInt(id as string)))
-      const arrs: any[] = []
+      const film=(await getDetail(props.mediaType, parseInt(id as string)))
 
-      for(let i = 0; i <6; i++){
-          arrs.push({})
+      if(film){
+        setFilm(film)
+        setTrailers(await getTrailers(film?.mediaType, film?.id))
+
       }
-      setTrailers(arrs)
+   
   }
   
   useEffect(()=>{
@@ -63,16 +70,16 @@ export const Films = (props: Props) => {
         </div>
       </Section>
 
-      <Section title="Trailers" className="overflow-y-hidden ">
+      <Section title="Trailers">
         <div className="scrollbar scrollbar-thumb-primary scrollbar-track-header">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 h-[300px]">
             {trailers.map((trailer, i) => (
-              <div className="flex-shrink-0 w-[320px] my-3">
-                <Card title={}
-                  imgSrc=''
-                  key={i}
-                ></Card>
-              </div>
+              <Card
+                onClick={() => playTrailer(trailer.key)}
+                imgSrc={youtubeImg(trailer.key)}
+                className="flex-shrink-0"
+                key={i}
+              ></Card>
             ))}
           </div>
         </div>

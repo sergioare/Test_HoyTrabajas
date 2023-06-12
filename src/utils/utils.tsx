@@ -26,3 +26,7 @@ export const imageAPI = (path:string)=>{
     if(!path) return ''
     return `https://image.tmdb.org/t/p/original/${path}`
 }
+
+export const youtubeImg = (key: string) => {
+    return `https://img.youtube.com/vi/${key}/mqdefault.jpg`
+  }
