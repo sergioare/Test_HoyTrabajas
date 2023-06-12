@@ -1,5 +1,6 @@
-import { Card, Images, Section } from "../components"
-import { Film, MediaType } from "../utils"
+import { getMovies } from "../API/api"
+import { Card, Section } from "../components"
+import { Film, MediaType, imageAPI } from "../utils"
 import {useState, useEffect} from 'react'
 import {useSearchParams} from 'react-router-dom'
 
@@ -10,12 +11,13 @@ export const Catalog = (props:Props) => {
     let title= ''
     const [films, setFilms] = useState<Film[]>([])
     const [params, _] = useSearchParams()
+
     switch(props.type){
       case 'movie':
         title= "MOVIES"
         break
 
-      case 'serie':
+      case 'tv':
         title= "SERIES"
         break
 
@@ -26,19 +28,12 @@ export const Catalog = (props:Props) => {
       default:
         break
     }
-      const fetch = ()=>{
-        const arrs: any[] = []
-
-        for(let i = 0; i <20; i++){
-            arrs.push({
-              title:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae mauris velit. Nam et quam sit amet felis dapibus ultrices.'
-            })
-        }
-        setFilms(arrs)
+      const fetchFilms = async ()=>{
+         setFilms(await getMovies())
       }
       
       useEffect(()=>{
-        fetch()  
+        fetchFilms()  
       }, [])
 
   return (
@@ -56,7 +51,7 @@ export const Catalog = (props:Props) => {
               {
                 films.map((film, i)=>(
                   <div>
-                    <Card imgSrc="" title={film.title} key={i}></Card>
+                    <Card imgSrc={imageAPI(film.coverPath) } title={film.title} key={i}></Card>
                   </div>
                 ))
               }

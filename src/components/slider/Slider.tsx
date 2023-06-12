@@ -1,14 +1,12 @@
-import { ReactNode, useState } from 'react'
 import './slider.css'
 import Slick, { Settings } from 'react-slick'
 
-interface Props extends Omit<Settings, 'children'>{
+interface Props extends Settings{
   isMovieCard?: boolean
-  children?: (onSwipe)=> ReactNode
 }
 
 export const Slider = (props:Props) => {
-  let settings: Omit<Settings, 'children'> = {
+  let settings: Settings = {
     ...props
   }
 
@@ -37,12 +35,9 @@ export const Slider = (props:Props) => {
       ],
     }
   }
-
-  const [onSwipe, setOnSwipe] = useState(false)
-
   return (
-    <Slick {...settings} autoplaySpeed={5000} onSwipe={()=>setOnSwipe(true)} afterChange={()=>setOnSwipe(false)}>
-        {props.children? props.children(onSwipe): ''}
+    <Slick {...settings} autoplaySpeed={5000}>
+        {props.children}
     </Slick>
   )
 }

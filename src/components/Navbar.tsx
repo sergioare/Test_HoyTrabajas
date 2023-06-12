@@ -86,7 +86,7 @@ export const Navbar = () => {
                     className="bg-transparent outline-0 flex-1" 
                     placeholder='Search...' 
                 />
-                <SearchIcon className='size-18'></SearchIcon>
+                <SearchIcon></SearchIcon>
                 {
                     isSearchFocus 
                     ? <SearchResults keyword={keyword} goToSearchPage={goToSearchPage}></SearchResults>

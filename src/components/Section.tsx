@@ -1,5 +1,5 @@
 import { Container } from "."
-import { CustomComponentProps, mergeClassName } from "../utils"
+import { CustomComponentProps } from "../utils"
 
 interface Props extends CustomComponentProps{
     title?: string
@@ -11,7 +11,10 @@ export const Section = (props:Props) => {
         {props.title?(
         <h1
           className="text-xl px-3 py-2"
-        >{props.title}</h1>
+          dangerouslySetInnerHTML={{
+            __html: props.title,
+          }}
+        ></h1>
          ) 
       :  ('')
       }
