@@ -56,7 +56,7 @@ export const SearchResults = (props: Props) => {
                 
                 <Images 
                     src={imageAPI(film.posterPath)} 
-                    className='h-[72px] min-w-[102px] w-[45%] rounded-md '
+                    className='h-[72px] min-w-[102px] max-w-[50%] w-[45%] rounded-md '
                 ></Images>
 
                 <div className="px-3 truncate">

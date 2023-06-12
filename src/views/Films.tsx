@@ -13,11 +13,11 @@ export const Films = (props: Props) => {
 
     const [trailers, setTrailers]= useState<Trailer[]>([])
 
-    const [trailerSrc, setTrailerSrc] = useState('')
+    // const [trailerSrc, setTrailerSrc] = useState('')
 
-    const playTrailer = async (key: string) => {
-      setTrailerSrc(`https://www.youtube.com/embed/${key}?autoplay=1`)
-    }
+    // const playTrailer = async (key: string) => {
+    //   setTrailerSrc(`https://www.youtube.com/embed/${key}?autoplay=1`)
+    // }
     const globalContext= useGlobalContext()
 
     const fetch = async ()=>{
@@ -70,12 +70,12 @@ export const Films = (props: Props) => {
         </div>
       </Section>
 
-      <Section title="Trailers">
-        <div className="scrollbar scrollbar-thumb-primary scrollbar-track-header">
+      <Section title="Trailers" className="">
+        <div className="scrollbar scrollbar-thumb-primary scrollbar-track-header " >
           <div className="flex items-center gap-3 h-[300px]">
             {trailers.map((trailer, i) => (
               <Card
-                onClick={() => playTrailer(trailer.key)}
+                // onClick={() => playTrailer(trailer.key)}
                 imgSrc={youtubeImg(trailer.key)}
                 className="flex-shrink-0"
                 key={i}
